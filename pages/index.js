@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import Layout from './layout'
 
 export default function Home() {
   return (
@@ -11,59 +13,35 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <Layout>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+      <h1 className={styles.title}>
+        Welcome to <a href="https://nextjs.org"> Homepage </a>
+      </h1>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+      <p className={styles.description}>
+        <Link prefetch={false} href="/"><a> Home</a></Link> <br />
+        <Link prefetch={false} href="/search"><a> Search Page</a></Link> <br />
+        <Link prefetch={false} href="/category"><a> Category Page</a></Link> <br />
+        <Link prefetch={false} href="/test"><a> Test Page</a></Link> <br />
+        
+      </p>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+      <div style={{
+        display: 'flex', 
+        flex: 1,
+        width: 500,
+        justifyContent: 'space-between',
+        }} className="offer-links">
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+        <div><a href="https://truely.rdtk.io/click/1">Offer 1</a></div>
+        <div><a href="https://truely.rdtk.io/click/2">Offer 2</a></div>
+        <div><a href="https://truely.rdtk.io/click/3">Offer 3</a></div>
+        <div><a href="https://truely.rdtk.io/click/4">Offer 4</a></div>
+      </div>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      </Layout>
+      
     </div>
   )
 }
