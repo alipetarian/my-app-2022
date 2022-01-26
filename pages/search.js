@@ -4,7 +4,22 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Layout from './layout'
 
+import cookie from 'cookie-cutter'
+
 export default function Home() {
+
+  const handleClick =(e) =>{
+    e.preventDefault();
+    e.stopPropagation();
+    const url = e.target.href;
+    const rtClickid = cookie.get('rtkclickid-store')
+
+    console.log('HANDLE CLICK',url)
+    console.log('CLICK ID: ', rtClickid)
+
+    window.open(`${url}?clickid=${rtClickid}`)
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -33,10 +48,10 @@ export default function Home() {
           justifyContent: 'space-between',
           }} className="offer-links">
 
-          <div><a href="https://truely.rdtk.io/click/5">Offer 5</a></div>
-          <div><a href="https://truely.rdtk.io/click/6">Offer 6</a></div>
-          <div><a href="https://truely.rdtk.io/click/7">Offer 7</a></div>
-          <div><a href="https://truely.rdtk.io/click/8">Offer 8</a></div>
+          <div><a onClick={handleClick} href="https://truely.rdtk.io/click/5">Offer 5</a></div>
+          <div><a onClick={handleClick} href="https://truely.rdtk.io/click/6">Offer 6</a></div>
+          <div><a onClick={handleClick} href="https://truely.rdtk.io/click/7">Offer 7</a></div>
+          <div><a onClick={handleClick} href="https://truely.rdtk.io/click/8">Offer 8</a></div>
         </div>
 
       </Layout>

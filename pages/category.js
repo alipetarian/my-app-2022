@@ -2,11 +2,24 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-
 import Layout from './layout'
+import cookie from 'cookie-cutter'
 
 
 export default function Home() {
+
+  const handleClick =(e) =>{
+    e.preventDefault();
+    e.stopPropagation();
+    const url = e.target.href;
+    const rtClickid = cookie.get('rtkclickid-store')
+
+    console.log('HANDLE CLICK',url)
+    console.log('CLICK ID: ', rtClickid)
+
+    window.open(`${url}?clickid=${rtClickid}`)
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -21,11 +34,10 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          <Link prefetch={false} href="/"><a> Home</a></Link> <br />
-          <Link prefetch={false} href="/search"><a> Search Page</a></Link> <br />
-          <Link prefetch={false} href="/category"><a> Category Page</a></Link> <br />
-          <Link prefetch={false} href="/test"><a> Test Page</a></Link> <br />
-          
+          <Link as="/" href="/"><a> Home</a></Link> <br />
+          <Link as="/search" href="/search"><a> Search Page</a></Link> <br />
+          <Link as="/category" href="/category"><a> Category Page</a></Link> <br />
+          <Link as="/test" href="/test"><a> Test Page</a></Link> <br />
         </p>
 
         <div style={{
@@ -35,10 +47,10 @@ export default function Home() {
           justifyContent: 'space-between',
           }} className="offer-links">
 
-          <div><a href="https://truely.rdtk.io/click/3">Offer 3</a></div>
-          <div><a href="https://truely.rdtk.io/click/4">Offer 4</a></div>
-          <div><a href="https://truely.rdtk.io/click/5">Offer 5</a></div>
-          <div><a href="https://truely.rdtk.io/click/6">Offer 6</a></div>
+          <div><a onClick={handleClick} href="https://truely.rdtk.io/click/3">Offer 3</a></div>
+          <div><a onClick={handleClick} href="https://truely.rdtk.io/click/4">Offer 4</a></div>
+          <div><a onClick={handleClick} href="https://truely.rdtk.io/click/5">Offer 5</a></div>
+          <div><a onClick={handleClick} href="https://truely.rdtk.io/click/6">Offer 6</a></div>
         </div>
 
       </Layout>

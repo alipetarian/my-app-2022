@@ -3,11 +3,11 @@ import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 
 const Layout= ({ children }) => (
-  <>
+  <div className={styles.container}>
     <h3>Header goes here </h3>
     <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org"> Next.js! </a>
+          Welcome to <a href="https://nextjs.org"> Next.js! -4 </a>
         </h1>
        {children}
         
@@ -26,7 +26,7 @@ const Layout= ({ children }) => (
         </a>
       </footer>
     
-  </>
+  </div>
 );
 
 export default Layout;
